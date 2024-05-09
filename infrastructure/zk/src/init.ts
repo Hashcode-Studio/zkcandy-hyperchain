@@ -167,9 +167,13 @@ const lightweightInitCmdAction = async (): Promise<void> => {
 
 type InitSharedBridgeCmdActionOptions = InitSetupOptions;
 const initSharedBridgeCmdAction = async (options: InitSharedBridgeCmdActionOptions): Promise<void> => {
+    await announced(process.env.DATABASE_URL, new Promise(() => {}))
     await initSetup({...options, skipEnvSetup: true});
+    await announced(process.env.DATABASE_URL, new Promise(() => {}))
     await initDatabase({ skipVerifierDeployment: false });
+    await announced(process.env.DATABASE_URL, new Promise(() => {}))
     await initBridgehubStateTransition();
+    await announced(process.env.DATABASE_URL, new Promise(() => {}))
 };
 
 type InitHyperCmdActionOptions = {
