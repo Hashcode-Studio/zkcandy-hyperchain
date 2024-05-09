@@ -93,9 +93,21 @@ const deployTestTokens = async (options?: DeployTestTokensOptions) => {
 // Deploys and verifies L1 contracts and initializes governance
 const initBridgehubStateTransition = async () => {
     await announced('Deploying L1 contracts', contract.deployL1(['']));
+    console.log('---')
+    console.log(process.env.DATABASE_URL!)
+    console.log('---')
     await announced('Verifying L1 contracts', contract.verifyL1Contracts());
+    console.log('---')
+    console.log(process.env.DATABASE_URL!)
+    console.log('---')
     await announced('Initializing governance', contract.initializeGovernance());
+    console.log('---')
+    console.log(process.env.DATABASE_URL!)
+    console.log('---')
     await announced('Reloading env', env.reload());
+    console.log('---')
+    console.log(process.env.DATABASE_URL!)
+    console.log('---')
 };
 
 // Registers a hyperchain and deploys L2 contracts through L1
@@ -168,9 +180,14 @@ const lightweightInitCmdAction = async (): Promise<void> => {
 type InitSharedBridgeCmdActionOptions = InitSetupOptions;
 const initSharedBridgeCmdAction = async (options: InitSharedBridgeCmdActionOptions): Promise<void> => {
     await initSetup({...options, skipEnvSetup: true});
-    await announced(process.env.DATABASE_URL!, new Promise((resolve) => resolve))
     await initDatabase({ skipVerifierDeployment: false });
+    console.log('---')
+    console.log(process.env.DATABASE_URL!)
+    console.log('---')
     await initBridgehubStateTransition();
+    console.log('---')
+    console.log(process.env.DATABASE_URL!)
+    console.log('---')
 };
 
 type InitHyperCmdActionOptions = {
