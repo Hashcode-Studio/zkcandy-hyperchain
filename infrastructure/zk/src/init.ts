@@ -167,7 +167,7 @@ const lightweightInitCmdAction = async (): Promise<void> => {
 
 type InitSharedBridgeCmdActionOptions = InitSetupOptions;
 const initSharedBridgeCmdAction = async (options: InitSharedBridgeCmdActionOptions): Promise<void> => {
-    await initSetup(options);
+    await initSetup({...options, skipEnvSetup: true});
     await initDatabase({ skipVerifierDeployment: false });
     await initBridgehubStateTransition();
 };
