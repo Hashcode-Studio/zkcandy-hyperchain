@@ -192,7 +192,8 @@ export const initHyperCmdAction = async ({
     if (!skipSetupCompletely) {
         await initSetup({ skipEnvSetup: false, skipSubmodulesCheckout: false, runObservability, validiumMode });
     }
-    await initDatabase({ skipVerifierDeployment: true });
+    // already performed during `zk init shared-bridge`
+    // await initDatabase({ skipVerifierDeployment: true });
     await initHyperchain({ includePaymaster: true, baseTokenName });
 };
 
