@@ -218,7 +218,7 @@ export async function erc20BridgeFinish(args: any[] = []): Promise<void> {
 export async function registerHyperchain({ baseTokenName }: { baseTokenName?: string }): Promise<void> {
     await utils.confirmAction();
 
-    const privateKey = process.env.GOVERNOR_PRIVATE_KEY;
+    const privateKey = process.env.DEPLOYER_PRIVATE_KEY;
     const args = [
         privateKey ? `--private-key ${privateKey}` : '',
         baseTokenName ? `--base-token-name ${baseTokenName}` : ''
