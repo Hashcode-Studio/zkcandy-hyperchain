@@ -219,10 +219,8 @@ export async function registerHyperchain({ baseTokenName }: { baseTokenName?: st
     await utils.confirmAction();
 
     const privateKey = process.env.DEPLOYER_PRIVATE_KEY;
-    const governorAddress = process.env.GOVERNOR_ADDRESS;
     const args = [
         privateKey ? `--private-key ${privateKey}` : '',
-        governorAddress ? `--governor-address ${governorAddress}` : '',
         baseTokenName ? `--base-token-name ${baseTokenName}` : ''
     ];
 
