@@ -335,6 +335,8 @@ impl EthTxAggregator {
         &mut self,
         verifier_address: Address,
     ) -> Result<H256, ETHSenderError> {
+        tracing::debug!("Getting VK hash from Verifier contract at {}", verifier_address);
+
         let get_vk_hash = &self.functions.verification_key_hash;
         let args = CallFunctionArgs::new(&get_vk_hash.name, ())
             .for_contract(verifier_address, self.functions.verifier_contract.clone());
