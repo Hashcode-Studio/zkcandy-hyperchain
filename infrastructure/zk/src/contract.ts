@@ -326,3 +326,6 @@ command
         deployL2ThroughL1({ includePaymaster: true });
     });
 command.command('deploy-verifier').description('deploy verifier to l1').action(deployVerifier);
+command.command("upgrade-diamond").description('upgrade diamond contracts').action(async (cmd) => {
+    await utils.spawn(`yarn l1-contracts upgrade-diamond | tee -a upgrade.log`);
+})
