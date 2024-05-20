@@ -68,8 +68,7 @@ export function set(environment: string, print: boolean = false) {
 // because dotenv won't override variables that are already set
 export function reload(environment?: string) {
     environment = environment ?? get();
-    // seems to overwrite exist env
-    // config.compileConfig();
+    config.compileConfig();
     const envFile = (process.env.ENV_FILE = `etc/env/target/${environment}.env`);
     const env = dotenv.parse(fs.readFileSync(envFile));
     for (const envVar in env) {
